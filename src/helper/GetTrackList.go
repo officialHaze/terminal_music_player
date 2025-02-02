@@ -3,15 +3,16 @@ package helper
 import (
 	"fmt"
 	"os"
-	"terminalmusicplayer/src/handler"
+
+	"github.com/officialHaze/terminal_music_player/src/handler"
 )
 
-func GetAudioList(audioDir *string) []string {
+func GetTrackList(audioDir *string) []string {
 
 	var audioPaths []string;
 
 	entries, err := os.ReadDir(*audioDir);
-	handler.HandleError(err);
+	handler.HandleError(err, nil);
 
 	// Print the name of all the audios
 	for _, audio := range entries {
