@@ -23,12 +23,14 @@ func decodeMp3(file *os.File, doneChan chan bool) (beep.StreamSeekCloser, *beep.
 func Playmp3(tracklist []string, count int, controlChan chan rune, doneChan chan bool) {
 	file := helper.OpenAudio(&tracklist[count], doneChan); // Open/Read the audio file
 
+	metadataList := GetMetadataList(&tracklist, doneChan);
+
 	strm, format := decodeMp3(file, doneChan);
 
 	defer file.Close();
 	defer strm.Close();
 
-	go Playsong(format, &count, &strm); // Play the song in a separate go routine in non blocking format
+	go Playsong(format, &count, &strm, &metadataList); // Play the song in a separate go routine in non blocking format
 
 	trackListSize := len(tracklist);
 	

@@ -1,36 +1,30 @@
-package prettytable
+package tracklist
 
 import (
 	"fmt"
-	"os"
 	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/jedib0t/go-pretty/v6/text"
+	"os"
 )
 
-type Song struct {
-	Title  string
-	Artist string
-	Album  string
-}
-
-func RenderTrackTable(currentSongIdx *int) {
+func RenderTrackTable(currentSongIdx *int, metadataList *[]SongMetadata) {
 	t := table.NewWriter()
 	t.SetOutputMirror(os.Stdout)
 
 	// Customization
-	CustomizeTrackTable(&t);
+	CustomizeTrackTable(&t)
 
-	songs := []Song{
-		{Title: "Cradled in love", Artist: "Poets of the fall", Album: "unknown"},
-		{Title: "F!en", Artist: "Travis Scott", Album: "unknown"},
-	}
+	// songs := []Song{
+	// 	{Title: "Cradled in love", Artist: "Poets of the fall", Album: "unknown"},
+	// 	{Title: "F!en", Artist: "Travis Scott", Album: "unknown"},
+	// }
 
 	t.AppendHeader(table.Row{"Title", "Artist", "Album"})
 
 	// Reset
 	t.ResetRows()
 	// Populate
-	for i, song := range songs {
+	for i, song := range *metadataList {
 		// Clear terminal screen (overwrites previous render)
 		fmt.Print("\033[H\033[2J") // Works on Linux/macOS; for Windows, use `cls` command
 

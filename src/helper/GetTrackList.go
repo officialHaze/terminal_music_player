@@ -1,7 +1,6 @@
 package helper
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/officialHaze/terminal_music_player/src/handler"
@@ -19,7 +18,6 @@ func GetTrackList(audioDir *string) []string {
 		if audio.IsDir() {
 			continue;
 		}
-		fmt.Println(audio.Name());
 		audioPaths = append(audioPaths, *audioDir+"/"+audio.Name());
 	}
 
