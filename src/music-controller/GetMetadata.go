@@ -4,12 +4,12 @@ import (
 	"github.com/dhowden/tag"
 	"github.com/officialHaze/terminal_music_player/src/handler"
 	"github.com/officialHaze/terminal_music_player/src/helper"
-	"github.com/officialHaze/terminal_music_player/src/tracklist"
+	tracktable "github.com/officialHaze/terminal_music_player/src/track-table"
 )
 
-func GetMetadataList(songPaths *[]string, doneChan chan bool) []tracklist.SongMetadata {
+func GetMetadataList(songPaths *[]string, doneChan chan bool) []tracktable.SongMetadata {
 
-	var metadatalist []tracklist.SongMetadata
+	var metadatalist []tracktable.SongMetadata
 
 	for _, songPath := range *songPaths {
 		// Open the audio file
@@ -18,7 +18,7 @@ func GetMetadataList(songPaths *[]string, doneChan chan bool) []tracklist.SongMe
 		// Read the tag from file
 		m, err := tag.ReadFrom(file)
 		handler.HandleError(err, nil)
-		metadatalist = append(metadatalist, tracklist.SongMetadata{Title: m.Title(), Artist: m.Artist(), Album: m.Album()})
+		metadatalist = append(metadatalist, tracktable.SongMetadata{Title: m.Title(), Artist: m.Artist(), Album: m.Album()})
 	}
 
 	return metadatalist
