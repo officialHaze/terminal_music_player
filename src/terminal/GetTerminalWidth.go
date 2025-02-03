@@ -12,5 +12,5 @@ func GetTerminalWidth() int {
 	if err != nil {
 		return 80 // Default fallback width
 	}
-	return int(float32(width) / 1.1)
+	return int(float32(width) / 1.09);
 }

@@ -1,4 +1,4 @@
-package tracklist
+package tracktable
 
 
 type SongMetadata struct {
