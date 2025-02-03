@@ -30,10 +30,10 @@ func RenderTrackTable(currentSongIdx *int, metadataList *[]SongMetadata) {
 		if i == *currentSongIdx {
 			// Highlight the entire row
 			t.AppendRow(table.Row{
-				Highlight(">", &colWidth, text.FgHiRed, text.BgHiRed, false),
-				Highlight(artist, &colWidth, text.FgHiCyan, text.BgHiCyan, false),
-				Highlight(title, &colWidth, text.FgHiGreen, text.BgHiGreen, false),
-				Highlight(album, &colWidth, text.FgHiYellow, text.BgHiYellow, false),
+				Highlight(">", &colWidth, text.FgHiWhite, text.BgHiRed, false),
+				Highlight(artist, &colWidth, text.FgHiWhite, text.BgHiCyan, false),
+				Highlight(title, &colWidth, text.FgHiWhite, text.BgHiGreen, false),
+				Highlight(album, &colWidth, text.FgHiBlue, text.BgHiYellow, false),
 			})
 		} else {
 			t.AppendRow(table.Row{
