@@ -1,7 +1,6 @@
 package tracktable
 
 import (
-	// "fmt"
 	"os"
 	"strings"
 
@@ -50,5 +49,8 @@ func RenderTrackTable(currentSongIdx *int, metadataList *[]SongMetadata) {
 }
 
 func padString(s string, width *int) string {
+	if len(s) >= *width {
+		return helper.Truncate(s, width)
+	}
 	return helper.Truncate(s, width) + strings.Repeat(" ", *width-len(s)) // Pad spaces
 }

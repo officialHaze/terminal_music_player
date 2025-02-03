@@ -6,6 +6,7 @@ import (
 	"github.com/officialHaze/terminal_music_player/src/helper"
 	"github.com/officialHaze/terminal_music_player/src/keystroke"
 	musiccontroller "github.com/officialHaze/terminal_music_player/src/music-controller"
+	"github.com/officialHaze/terminal_music_player/src/terminal"
 )
 
 func main() {
@@ -14,7 +15,7 @@ func main() {
 	controlChan := make(chan rune)
 	doneChan := make(chan bool)
 
-	musicDir := "C:/Users/moina/Downloads/Music/mp3"; // assigned music directory
+	musicDir := terminal.GetMusicDirArg(); // assigned music directory
 	trackList := helper.GetTrackList(&musicDir); // Get the list of tracks from the music directory
 
 	go keystroke.CaptureKeystroke(controlChan); // Run it as a sepearate go routine for non blocking IO
